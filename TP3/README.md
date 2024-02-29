@@ -1,5 +1,5 @@
-# TP2  - Conversão de JSON para TTL - Escola de música
-__Data:__ 25/2/2024
+# TP3  - Queries em SPARQL - Mapa Virtual
+__Data:__ 28/2/2024
 
 __Autor:__ Francisca Barros
 
@@ -44,14 +44,11 @@ Finalmente, o resultado foi importado para o GraphDB, e foram criadas queries pa
 1. Quais as cidades de um determinado distrito?
 
 ```sql
-
 PREFIX : <http://rpcw.di.uminho.pt/2024/mapa-virtual/>
 select ?nome where { 
 	?s :distrito "Porto" .
     ?s :nome ?nome
 }
-
-
 ```
 
 
@@ -59,13 +56,11 @@ select ?nome where {
 
 
 ```sql
-
 PREFIX : <http://rpcw.di.uminho.pt/2024/mapa-virtual/>
 select ?distrito (COUNT(distinct ?cidade) as ?ncidades) where { 
     ?cidade :distrito ?distrito .
 }
 group by ?distrito
-
 ```
 
 3. Quantas cidades se podem atingir a partir do Porto? (Diretamente)
