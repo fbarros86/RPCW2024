@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tabela Periódica: {{data.nome}}</title>
+    <link rel="icon" href="{{ url_for('static',filename = 'favicon.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'styles/w3.css') }}"/>
+  </head>
+  <body>
+    <div class="w3-card-4">
+        <header class="w3-container w3-indigo">
+            <h1>Página do elemento {{data.name.value}}</h1>
+        </header>
+        <div class=w3-container>
+          <h3><b>Símbolo:</b>  {{ data.symbol.value }} </h3>
+          <h3><b>Número atómico:</b>  {{ data.na.value }} </h3>
+          <h3><b>Peso atómico:</b>  {{ data.aw.value }} </h3>
+          <h3><b>Bloco:</b>  {{ data.block.value.split("#")[-1] }} </h3>
+          <h3><b>ID de registoCAS:</b>  {{ data.rid.value }} </h3>
+          <h3><b>Classificação:</b>  {{ data.class.value.split("#")[-1] }} </h3>
+          <h3><b>Cor:</b>  {{ data.color.value }} </h3>
+          <h3><b>Grupo:</b>  {{ data.group.value.split("#")[-1]  }} </h3>
+          <h3><b>Período:</b>  {{ data.period.value }} </h3>
+          <h3><b>Estado normal:</b>  {{ data.state.value.split("#")[-1]  }} </h3>
+        </div>
+
+        <footer class="w3-container w3-indigo">
+            <h5>Gerado por xiquitita - <a href="/">Voltar à página princial</a></h5>
+        </footer>
+    </div>
+  </body>
+</html>
