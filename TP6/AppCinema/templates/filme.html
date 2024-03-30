@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>App Cinema: {{data.title}}</title>
+    <link rel="icon" href="{{ url_for('static',filename = 'favicon.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'styles/w3.css') }}"/>
+  </head>
+  <body>
+    <div class="w3-card-4">
+        <header class="w3-container w3-indigo">
+            <h1>Página do filme {{data.title}}</h1>
+        </header>
+        <div class="w3-container">
+          <h3><b>Descrição:</b></h3> {{ data.description }}
+          <h3><b>Duração:</b> </h3>{{ data.duration }}
+        
+          {% if data.genres %}
+            <h3><b>Géneros:</b></h3>
+            <ul>
+              {% for genre in data.genres %}
+                <li>{{ genre }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        
+          {% if data.country %}
+            <h3><b>Países:</b></h3>
+            <p>{{ data.country }}</p>
+          {% endif %}
+        
+          {% if data.directors %}
+            <h3><b>Realizadores:</b></h3>
+            {% if data.directors|length == 1 %}
+              <p>{{ data.directors[0] }}</p>
+            {% else %}
+              <ul>
+                {% for director in data.directors %}
+                  <li>{{ director }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endif %}
+        
+          {% if data.actors %}
+            <h3><b>Atores:</b></h3>
+            {% if data.actors|length == 1 %}
+              <p>{{ data.actors[0] }}</p>
+            {% else %}
+              <ul>
+                {% for actor in data.actors %}
+                  <li>{{ actor }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endif %}
+        
+          {% if data.composers %}
+            <h3><b>Compositores:</b></h3>
+            {% if data.composers|length == 1 %}
+              <p>{{ data.composers[0] }}</p>
+            {% else %}
+              <ul>
+                {% for composer in data.composers %}
+                  <li>{{ composer }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endif %}
+        
+          {% if data.producers %}
+            <h3><b>Produtores:</b></h3>
+            {% if data.producers|length == 1 %}
+              <p>{{ data.producers[0] }}</p>
+            {% else %}
+              <ul>
+                {% for producer in data.producers %}
+                  <li>{{ producer }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endif %}
+        
+          {% if data.screenwriters %}
+            <h3><b>Argumentistas:</b></h3>
+            {% if data.screenwriters|length == 1 %}
+              <p>{{ data.screenwriters[0] }}</p>
+            {% else %}
+              <ul>
+                {% for screenwriter in data.screenwriters %}
+                  <li>{{ screenwriter }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        <footer class="w3-container w3-indigo">
+            <h5> <a href="/">Voltar à página princial</a></h5>
+        </footer>
+    </div>
+  </body>
+</html>
+
+

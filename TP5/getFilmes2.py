@@ -79,7 +79,7 @@ headers = {
 results_limit = 10000  # Define o número máximo de resultados por solicitação
 offset = 0
 all_results = []
-
+print("begin fetching data...")
 while True:
     sparql_query = sparql_query_template.format(results_limit, offset)
 
@@ -97,12 +97,17 @@ while True:
         all_results.extend(results["results"]["bindings"])
         offset += results_limit
     elif response.status_code == 206:
+        results = response.json()
+        if not results["results"]["bindings"]:
+            break  # Se não houver mais resultados, pare o loop
+        all_results.extend(results["results"]["bindings"])
         print("Done - no more entries")
         break
     else:
         print("Error: ", response.status_code)
-       # print(response.text)
+        print(response.text)
         break
+print("fetched data, now time to parse")
 
 # Processar todos os resultados como antes
 #?nome ?abstract ?duracao ?nomeAtor ?nomeRealizador ?nomeProdutor ?pais ?genre ?nomeEscritor ?nomeMusico
